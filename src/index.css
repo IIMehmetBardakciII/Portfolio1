@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import "tailwindcss";
+
+* {
+  font-family: "Manrope", sans-serif;
+}
+html{
+  scroll-behavior: smooth;
+}
+body {
+  overflow-x: hidden;
+  font-variant-numeric: tabular-nums;
+
+}
+
+@theme {
+  --color-primary: #0e0e0e;
+  --color-secondary: #fffdf1;
+  --color-accent: #62805b;
+  --color-bg: #fefdfa;
+  --color-body_color_Dark: rgba(255, 253, 241, 0.6);
+  --color-body_color_Light: rgba(14, 14, 14, 0.6);
+
+  --spacing-section_desktop_margin: 136px;
+}
+
+/** Utilities */
+@utility container {
+/* bg normalde padding işlemiyor fakat bg-left ve bg-top verince mecburi anchor pontini top lefte alıyor buda içerğin en üst sol köşesinden başlayarak kendini dolduruyor buda 
+padding sorununu çözüyor */
+  @apply max-w-[1440px] mx-auto  sm:px-10 px-6  min-h-screen bg-left bg-top bg-no-repeat ; 
+}
+
+@utility whitegrid{
+    @apply bg-[url('/white_grid.svg')]; 
+}
+@utility darkgrid{
+   @apply bg-[url('/dark_grid.svg')] ;
+}
+@utility h1 {
+  @apply text-[195.14px] font-semibold leading-[199.2px] tracking-[0.02em];
+}
+@utility h2 {
+  @apply text-[128.14px] font-semibold leading-[86.8px] tracking-[0.02em];
+}
+@utility h3 {
+  @apply text-[64px] font-semibold leading-normal;
+}
+@utility body {
+  @apply text-[32px] font-normal leading-[32px];
+}
+@utility span {
+  @apply text-[20px] font-medium leading-normal;
+}
+@utility min_text {
+  @apply text-[12px] font-semibold leading-normal;
+}
+
+
+@layer utilities {
+    .hover_text {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    color: transparent;          /* Orijinal metni gizle */
+    white-space: nowrap;         /* Satır kaymasını engelle */
+    /* width: 100%; */  
+             /* Bu satırı kaldır ya da auto yap */
+  }
+  
+  .hover_text::before,
+  .hover_text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width:auto;
+    transition: transform 0.4s ease;
+
+  }
+
+  .hover_text::before {
+    top: 0;
+    transform: translateY(0);
+    color:var(--color-primary);
+
+  }
+  .hover_text:hover::before {
+    transform: translateY(-100%);
+  }
+  
+  .hover_text::after {
+    top: 100%;
+    transform: translateY(0);
+    color:var(--color-accent);
+
+  }
+  .hover_text:hover::after {
+    transform: translateY(-100%);
+  }
+    .hover_textSecondary {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    color: transparent;          /* Orijinal metni gizle */
+    white-space: nowrap;         /* Satır kaymasını engelle */
+    /* width: 100%; */  
+             /* Bu satırı kaldır ya da auto yap */
+  }
+  
+  .hover_textSecondary::before,
+  .hover_textSecondary::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width:auto;
+    transition: transform 0.4s ease;
+
+  }
+
+  .hover_textSecondary::before {
+    top: 0;
+    transform: translateY(0);
+    color:var(--color-body_color_Dark);
+
+  }
+  .hover_textSecondary:hover::before {
+    transform: translateY(-100%);
+  }
+  
+  .hover_textSecondary::after {
+    top: 100%;
+    transform: translateY(0);
+    color:var(--color-secondary);
+
+  }
+  .hover_textSecondary:hover::after {
+    transform: translateY(-100%);
+  }
+}
+
+.svgCurve{
+  position: absolute;
+  top: 0;
+  left:-99px;
+  width: 100px;
+  height: 100%;
+  fill: var(--color-primary);
+  stroke:none;  
+}
