@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 
 // import Footer from "./components/Footer";
-// import Hero from "./sections/Hero";
+import Hero from "./sections/Hero";
 
 gsap.registerPlugin(ScrollTrigger);
 const App = () => {
@@ -29,10 +29,11 @@ const App = () => {
    <div className=" min-h-screen object-contain w-screen bg-[url('/white_Bg.svg')]">
    <div className="container whitegrid">
      <Navbar />
-     {/* <main>
+     <main>
       <Hero />
-     </main> */}
+     </main>
      {/* <Footer /> */}
+    
    </div>
    </div>
 
