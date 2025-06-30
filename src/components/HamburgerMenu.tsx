@@ -5,6 +5,7 @@ gsap.registerPlugin(SplitText);
 import { useLenis } from "lenis/react";
 import Curve from "./Curve";
 import HoverTextAnimationSecondary from "./HoverTextAnimationSecondary";
+import clsx from "clsx";
 
 
 const links = [
@@ -29,7 +30,7 @@ const links = [
     text: "Contact",
   },
 ];
-const HamburgerMenu = () => {
+const HamburgerMenu = ({variant}:{variant:"variant1"|"variant2"}) => {
   const lenis = useLenis();
   const [open, setOpen] = useState(false);
   const hamburgerContainerRef = useRef<HTMLDivElement | null>(null);
@@ -103,9 +104,12 @@ const HamburgerMenu = () => {
   return (
     <>
       <button
-        className={`w-16 h-16 rounded-full  cursor-pointer relative z-10
-          ${open ? "bg-secondary" : "bg-primary"}
-          `}
+        className={clsx(
+          "w-16 h-16 min-w-16 rounded-full  cursor-pointer relative z-[30] overflow-hidden",
+          open&&"bg-secondary",
+          variant=="variant1"?"bg-primary hover:scale-95 transition-all ease-[cubic-bezier(0.25, 1, 0.5, 1)] duration-300":"bg-accent button_hover2"
+          
+        )}
         onClick={handleClick}
       >
         {/* Top Line */}
@@ -124,7 +128,7 @@ const HamburgerMenu = () => {
       </button>
 
       {/* Side menu  */}
-      <div className="fixed inset-0   w-full max-sm:w-screen  translate-x-full   z-[2]"  
+      <div className="fixed inset-0   w-full max-sm:w-screen  translate-x-full   z-[20]"  
       ref={hamburgerContainerRef}>
         <div
           className="w-[600px] max-sm:w-full   h-screen bg-primary absolute right-0 top-0 pointer-events-auto"

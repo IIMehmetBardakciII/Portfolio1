@@ -2,18 +2,52 @@ import { useGSAP } from "@gsap/react";
 import Button from "../components/Button";
 import TextAnimation from "../components/TextAnimation";
 import gsap from "gsap";
+import { useRef } from "react";
+import { ScrollTrigger } from "gsap/all";
 
 const Hero = () => {
-  useGSAP(()=>{
-    gsap.from("#imagehero",{
-      x:"-50%",
-      opacity:0,
-      ease:"cubic-bezier(0.16, 1, 0.3, 1)",
-      duration:1,
-    })
-  },[])
+  const containerRef=useRef<HTMLElement|null>(null);
+useGSAP(() => {
+  const hero = containerRef.current;
+
+  gsap.from("#imagehero", {
+    x: "-50%",
+    opacity: 0,
+    ease: "cubic-bezier(0.16, 1, 0.3, 1)",
+    duration: 1,
+  });
+
+  // Pin işlemi
+  ScrollTrigger.create({
+    trigger: hero,
+    start: "top top",
+    end: "+=100%",
+    pin: true,
+    pinSpacing: false,
+  });
+
+  // Opacity geçişi
+  gsap.fromTo(
+    hero,
+    { opacity: 1, y:0},
+    {
+      opacity: 0,
+      y:"-50%",
+      scale:0.5,
+      ease: "none",
+      scrollTrigger: {
+        trigger: hero,
+        start: "top top",
+        end: "+=100%",
+        scrub: true,
+      },
+    }
+  );
+}, []);
+
+
   return (
-    <header className="xl:mt-[60px] sm:mt-10 mt-5 flex  flex-col gap-[40px] min-h-screen pb-section_desktop_margin">
+    <header ref={containerRef} className="relative z-10 xl:mt-[60px] sm:mt-10 mt-5 flex  flex-col gap-[40px] min-h-screen pb-section_desktop_margin">
        <div className="w-full ">
        <TextAnimation><h1 className="xl:h1 sm:h2 h3">adnan karatas</h1></TextAnimation>
       </div>

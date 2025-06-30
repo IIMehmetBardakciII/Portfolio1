@@ -34,7 +34,7 @@ const Navbar = () => {
 
       {/* Hamburger menu  max width <= 640px */}
     <div className="hidden max-sm:block">
-      <HamburgerMenu />
+      <HamburgerMenu variant="variant1" />
     </div>
       
     </nav>

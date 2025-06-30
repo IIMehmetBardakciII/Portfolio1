@@ -26,9 +26,9 @@ body {
 
 /** Utilities */
 @utility container {
-/* bg normalde padding işlemiyor fakat bg-left ve bg-top verince mecburi anchor pontini top lefte alıyor buda içerğin en üst sol köşesinden başlayarak kendini dolduruyor buda 
+/* bg-url e normalde padding işlemiyor fakat bg-left ve bg-top verince mecburi anchor pontini top lefte alıyor buda içerğin en üst sol köşesinden başlayarak kendini dolduruyor buda 
 padding sorununu çözüyor */
-  @apply max-w-[1440px] mx-auto  sm:px-10 px-6  min-h-screen bg-left bg-top bg-no-repeat ; 
+  @apply max-w-[1440px] mx-auto  sm:px-10 px-6   bg-left bg-top bg-no-repeat ; 
 }
 
 @utility whitegrid{
@@ -172,9 +172,30 @@ padding sorununu çözüyor */
   transform: translateX(-50%) translateY(0);
 }
 
-.button_hover:hover > span {
-  color: var(--color-secondary);
+.button_hover2::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;          /* Ortadan başla */
+  width: 0%;          /* Başlangıçta görünmez */
+  height: 100%;
+  background-color: var(--color-body_color_Dark);
+  border-radius: 9999px;
+  transform-origin: center center;
+  transform: translateX(-50%) translateY(100%);
+  transition: 
+    transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+    width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1;
 }
+
+.button_hover2:hover::before {
+  width: 100%;        /* Tam genişlik */
+  left: 50%;          /* Ortada kal */
+  transform: translateX(-50%) translateY(0);
+}
+
+
 
 
 

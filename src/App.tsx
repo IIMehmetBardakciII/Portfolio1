@@ -7,6 +7,9 @@ import { useEffect } from "react";
 
 // import Footer from "./components/Footer";
 import Hero from "./sections/Hero";
+import Services from "./sections/Services";
+import Projects from "./sections/Projects";
+import FixedRightNavigation from "./components/FixedRightNavigation";
 
 gsap.registerPlugin(ScrollTrigger);
 const App = () => {
@@ -27,13 +30,19 @@ const App = () => {
  gsap.ticker.lagSmoothing(0);
   return (
    <div className=" min-h-screen object-contain w-screen bg-[url('/white_Bg.svg')]">
+    <div className="   container ">
+      <FixedRightNavigation />
+    </div>
    <div className="container whitegrid">
      <Navbar />
-     <main>
       <Hero />
-     </main>
-     {/* <Footer /> */}
-    
+   </div>
+   {/* Black area */}
+   <div className="w-full h-full bg-[url('/dark_Bg.svg')] relative z-20">
+      <div className="container darkgrid">
+        <Services />
+        <Projects />
+      </div>
    </div>
    </div>
 
