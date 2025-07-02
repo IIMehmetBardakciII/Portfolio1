@@ -9,52 +9,54 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const containerRefProjects = useRef<HTMLDivElement | null>(null);
+
+  function getScrollDistance() {
+  return (
+    (sliderRef.current?.scrollWidth || 0) -
+    (containerRefProjects.current?.offsetWidth || 0)
+  );
+}
 useGSAP(() => {
-  const initScrollAnimation = () => {
-    const isDesktop = window.innerWidth >= 768;
-    if (!isDesktop) {
-      // cleanup (animasyon varsa iptal et)
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-      return;
-    }
+  if (
+    !sliderRef.current ||
+    !containerRefProjects.current ||
+    getScrollDistance() <= 0
+  )
+    return;
 
-    const sliderWidth = sliderRef.current?.scrollWidth || 0;
-    const containerWidth = containerRef.current?.offsetWidth || 0;
-    const scrollDistance = sliderWidth - containerWidth;
+  const ctx = gsap.context(() => {
+    const mediaGsap = gsap.matchMedia();
 
-    if (!sliderRef.current || !containerRef.current || scrollDistance <= 0) return;
-
-    gsap.to(sliderRef.current, {
-      x: -scrollDistance,
-      ease: "none",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top+=100 top",
-        end: `+=${scrollDistance}`,
-        scrub: true,
-        pin: true,
-        anticipatePin: 1,
-      },
+    mediaGsap.add("(min-width: 768px)", () => {
+      gsap.to(sliderRef.current, {
+        x: () => -getScrollDistance(), // ✅ Fonksiyon olarak verildi
+        scrollTrigger: {
+          trigger: containerRefProjects.current,
+          start: "top+=100 top",
+          end: () => `+=${getScrollDistance()}`,
+          scrub: true,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true, // ✅ Scroll mesafesi yeniden hesaplanır
+        },
+      });
     });
-  };
+  });
 
-  // İlk başlatma
-  initScrollAnimation();
-
-  // Resize durumunda yeniden başlat
+  // ✅ Resize durumunda refresh yap (scrollTrigger tekrar ölçüm alsın)
   const handleResize = () => {
-    ScrollTrigger.getAll().forEach((t) => t.kill());
-    initScrollAnimation();
+   ScrollTrigger.refresh()
   };
 
   window.addEventListener("resize", handleResize);
 
   return () => {
     window.removeEventListener("resize", handleResize);
-    ScrollTrigger.getAll().forEach((t) => t.kill());
+    ctx.revert(); // Tüm GSAP context temizlik
   };
-}, []);
+});
+
 
   return (
     <section className="pt-section_desktop_margin w-full relative h-full">
@@ -66,12 +68,12 @@ useGSAP(() => {
         icon="/projectsIcon.svg"
       />
       <div
-        ref={containerRef}
+        ref={containerRefProjects}
         className="w-full mt-[100px] overflow-x-clip  overflow-y-hidden "
       >
         <div
           ref={sliderRef}
-  className="xl:h-[855px] sm:h-[818px] h-full w-auto flex max-md:flex-col gap-10"
+          className="xl:h-[855px]  h-full w-auto flex max-md:flex-col gap-10  "
         >
           {projects.map((project) => (
             <ProjectSlider

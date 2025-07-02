@@ -21,7 +21,7 @@ const links = [
 ];
 const Navbar = () => {
   return (
-    <nav className="pt-12 flex justify-between items-center ">
+    <nav className="pt-12 flex justify-between items-center relative z-[40] ">
       <div className="logo">[Computer Engineer]</div>
       <ul className="flex gap-3 max-sm:hidden">
         {links.map((link, index) => (

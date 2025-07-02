@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react"; // useEffect'i ekleyin
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import HamburgerMenu from "./HamburgerMenu";
@@ -8,31 +8,50 @@ import Button from "./Button";
 gsap.registerPlugin(ScrollTrigger);
 
 const FixedRightNavigation = () => {
-  const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
-  useGSAP(() => {
-    const trigger = ScrollTrigger.create({
-      trigger: document.body,
-      start: `${window.innerHeight + 200} top`,
-      onEnter: () => setShowMenu(true),
-      onLeaveBack: () => setShowMenu(false),
-    });
+useEffect(() => {
+  const handleResize = () => {
+    ScrollTrigger.refresh();
+  };
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
-    return () => {
-      trigger.kill();
-    };
-  }, []);
+useGSAP(() => {
+  if (!menuRef.current) return;
 
+  const tween = gsap.fromTo(
+    menuRef.current,
+    { opacity: 0 },
+    { opacity: 1, ease: "none" }
+  );
 
+  const trigger=ScrollTrigger.create({
+    trigger: document.body,
+    start: () => `${window.innerHeight + 200} top`,
+    end: () => `${window.innerHeight + 400} top`,
+    scrub: true,
+    animation: tween,
+    // markers: true,
+    invalidateOnRefresh: true,
+  });
 
-  if (!showMenu) return null;
+  return  ()=> {trigger.kill(),tween.kill()}
+});
+
 
   return (
-    <div ref={menuRef} className="fixed right-5 top-5 z-50 flex gap-10 min-h-[64px]">
-         <Button variant="variant2" additionalClass="relative z-100" />
-        <HamburgerMenu variant="variant2" />
-     
+    <div
+      ref={menuRef}
+      className="fixed right-5 top-5 z-30 flex gap-10 max-sm:gap-5 min-h-[64px]"
+    >
+      <Button
+        variant="variant2"
+        additionalClass="relative z-100 max-sm:py-[5px]"
+      />
+
+      <HamburgerMenu variant="variant2" />
     </div>
   );
 };

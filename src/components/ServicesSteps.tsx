@@ -13,8 +13,7 @@ const ServicesSteps = ({ title, number, description }: PropsType) => {
   const descriptionRef = useRef<HTMLParagraphElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
   const spanRef = useRef<HTMLSpanElement | null>(null);
-
-  useGSAP(() => {
+ useGSAP(() => {
     if (
       !serviceContainerRef.current ||
       !titleRef.current ||
@@ -23,64 +22,59 @@ const ServicesSteps = ({ title, number, description }: PropsType) => {
     )
       return;
 
-    // spanRef ayrı, scrub 2
-    gsap.fromTo(
-      spanRef.current,
-      { backgroundColor: "var(--color-bg)", width: "0%" },
-      {
-        backgroundColor: "var(--color-secondary)",
-        width: "100%",
+    const ctx = gsap.context(() => {
+      // span animation
+      gsap.fromTo(
+        spanRef.current,
+        { backgroundColor: "var(--color-bg)", width: "0%" },
+        {
+          backgroundColor: "var(--color-secondary)",
+          width: "100%",
+          scrollTrigger: {
+            trigger: serviceContainerRef.current,
+            start: "top 60%",
+            end: "bottom 80%",
+            scrub: 2,
+          },
+        }
+      );
+
+      // timeline for title and description
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: serviceContainerRef.current,
           start: "top 60%",
           end: "bottom 80%",
-          scrub: 2,
+          scrub: true,
         },
-      }
-    );
+      });
 
-    // titleRef ve descriptionRef için timeline (scrub true)
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: serviceContainerRef.current,
-        start: "top 60%",
-        end: "bottom 80%",
-        scrub: true,
-      },
-    });
-
-    tl.fromTo(
-      titleRef.current,
-      { opacity: 0, y: "50%" },
-      { opacity: 1, y: 0 }
-    ).fromTo(
-      descriptionRef.current,
-      { opacity: 0, y: "-50%" },
-      { opacity: 1, y: 0 },
-      "<" 
-    );
+      tl.fromTo(titleRef.current, { opacity: 0, y: "50%" }, { opacity: 1, y: 0 }).fromTo(
+        descriptionRef.current,
+        { opacity: 0, y: "-50%" },
+        { opacity: 1, y: 0 },
+        "<"
+      );
+    }, serviceContainerRef); // scope veriyoruz
 
     return () => {
-      tl.kill();
-      ScrollTrigger.getAll().forEach((trigger) => {
-        if (trigger.animation === undefined) {
-          // Bu scrub:2 için oluşturulan scrolltrigger ise onu da temizle
-          trigger.kill();
-        }
-      });
+      ctx.revert(); // tüm GSAP ve ScrollTrigger animasyonlarını temizler
     };
   }, []);
+  // useGSAP(() => {
+    
+  // }, []);
 
   return (
     <div ref={serviceContainerRef} className="w-full flex flex-col gap-[34px]">
       <div
         ref={titleRef}
-        className="flex w-full justify-between text-secondary  "
+        className="flex w-full justify-between text-secondary"
       >
-        <h3 className="xl:h3 sm:body span ">{title}</h3>
-        <h3 className="xl:h3 sm:body span ">[{number}]</h3>
+        <h3 className="xl:h3 sm:body span">{title}</h3>
+        <h3 className="xl:h3 sm:body span">[{number}]</h3>
       </div>
-      <span ref={spanRef} className="inline-block  h-[1px]  mt-[-32px]" />
+      <span ref={spanRef} className="inline-block h-[1px] mt-[-32px] bg-secondary" />
       <p
         ref={descriptionRef}
         className="text-bg sm:body span max-w-[668px] pb-4"

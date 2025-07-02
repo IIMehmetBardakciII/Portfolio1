@@ -10,10 +10,12 @@ import Hero from "./sections/Hero";
 import Services from "./sections/Services";
 import Projects from "./sections/Projects";
 import FixedRightNavigation from "./components/FixedRightNavigation";
+import About from "./sections/About";
 
 gsap.registerPlugin(ScrollTrigger);
 const App = () => {
   const lenis = useLenis();
+  
 
   useEffect(() => {
     if (!lenis) return;
@@ -25,25 +27,33 @@ const App = () => {
     });
 
     gsap.ticker.lagSmoothing(0);
+    return () => {
+  lenis.off('scroll', ScrollTrigger.update);
+};
   }, [lenis]);
 
  gsap.ticker.lagSmoothing(0);
+
   return (
-   <div className=" min-h-screen object-contain w-screen bg-[url('/white_Bg.svg')]">
-    <div className="   container ">
-      <FixedRightNavigation />
-    </div>
+
+     <div className="  object-contain w-screen bg-[url('/white_Bg.svg')] min-h-screen">
    <div className="container whitegrid">
      <Navbar />
       <Hero />
    </div>
    {/* Black area */}
+
    <div className="w-full h-full bg-[url('/dark_Bg.svg')] relative z-20">
       <div className="container darkgrid">
         <Services />
         <Projects />
+        <About />
       </div>
    </div>
+
+   <div className="container">
+      <FixedRightNavigation />
+    </div>
    </div>
 
   

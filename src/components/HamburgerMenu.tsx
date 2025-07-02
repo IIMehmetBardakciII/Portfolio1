@@ -131,7 +131,7 @@ const HamburgerMenu = ({variant}:{variant:"variant1"|"variant2"}) => {
       <div className="fixed inset-0   w-full max-sm:w-screen  translate-x-full   z-[20]"  
       ref={hamburgerContainerRef}>
         <div
-          className="w-[600px] max-sm:w-full   h-screen bg-primary absolute right-0 top-0 pointer-events-auto"
+          className="w-[600px] max-sm:w-full   h-screen bg-primary absolute right-[-50px] top-0 pointer-events-auto"
         >
           <div className="w-full px-[34px] mt-8 h-full flex justify-center flex-col gap-2 max-sm:gap-8 relative">
             {links.map((link) => (

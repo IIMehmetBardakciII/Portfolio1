@@ -1,10 +1,9 @@
 import clsx from "clsx";
 import TextAnimation from "./TextAnimation";
-import ServicesSteps from "./ServicesSteps";
 
 type PropsType = {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   icon: string;
   variant: "left" | "right";
   sectionNumber: string;
@@ -47,11 +46,11 @@ const SectionHeader = ({
           variant == "left" ? "justify-end" : "justify-start"
         )}
       >
-        <TextAnimation>
+        {subtitle&&<TextAnimation>
           <p className="body max-sm:span text-body_color_Dark  xl:w-1/2 w-full h-[132px]">
             {subtitle}
           </p>
-        </TextAnimation>
+        </TextAnimation>}
       </div>
 
       
