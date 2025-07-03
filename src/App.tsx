@@ -42,14 +42,14 @@ const App = () => {
   ) : (
     <div
       id="main-content"
-      className=" w-screen min-h-screen object-contain bg-[url('/white_Bg.svg')]"
+      className=" w-screen min-h-screen object-cover bg-[url('/white_Bg.webp')]"
     >
       <div className="container whitegrid">
         <Navbar />
         <Hero />
       </div>
 
-      <div className="w-full h-full bg-[url('/dark_Bg.svg')] relative z-20">
+      <div className="w-full h-full object-cover bg-[url('/dark_Bg.webp')] relative z-20">
         <div className="container darkgrid">
           <Services />
           <Projects />
@@ -57,7 +57,7 @@ const App = () => {
         </div>
       </div>
 
-      <div className="w-full h-full bg-[url('/dark_Bg.svg')] relative z-20">
+      <div className="w-full h-full bg-[url('/dark_Bg.webp')] relative z-20">
         <div className="container darkgrid">
           <Contact />
         </div>
