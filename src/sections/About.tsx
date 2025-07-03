@@ -2,7 +2,7 @@ import SectionHeader from "../components/SectionHeader";
 
 const About = () => {
   return (
-    <section className="w-full min-h-screen mt-section_desktop_margin">
+    <section className="w-full min-h-screen mt-section_desktop_margin" id="about">
       <SectionHeader
         sectionNumber="04"
         title="about me"

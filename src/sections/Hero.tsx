@@ -49,7 +49,7 @@ gsap.fromTo(
 },[])
 
     return (
-      <header id="#hero" ref={herocontainerRef} className="relative z-10 xl:mt-[60px] sm:mt-10 mt-5 flex  flex-col gap-[40px] min-h-screen pb-section_desktop_margin">
+      <header id="home" ref={herocontainerRef} className="relative z-10 xl:mt-[60px] sm:mt-10 mt-5 flex  flex-col gap-[40px] min-h-screen pb-section_desktop_margin">
         <div className="w-full ">
         <TextAnimation><h1 className="xl:h1 sm:h2 h3">adnan karatas</h1></TextAnimation>
         </div>

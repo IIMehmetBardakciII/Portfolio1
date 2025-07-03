@@ -3,7 +3,7 @@ import TextAnimation from "../components/TextAnimation";
 
 const Contact = () => {
   return (
-    <section className="w-full sm:mt-section_desktop_margin mt-[72px] sm:h-[543px] h-[404px]  flex items-center justify-center  ">
+    <section id="contact" className="w-full sm:mt-section_desktop_margin mt-[72px] sm:h-[543px] h-[404px]  flex items-center justify-center  ">
       <div className="flex items-center flex-col gap-10">
         <TextAnimation>
           <div>
