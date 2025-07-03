@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react"; // useEffect'i ekleyin
+import { useRef, useEffect } from "react"; // useEffect'i ekleyin
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import HamburgerMenu from "./HamburgerMenu";
@@ -10,21 +10,21 @@ gsap.registerPlugin(ScrollTrigger);
 const FixedRightNavigation = () => {
   const menuRef = useRef<HTMLDivElement | null>(null);
 
-useEffect(() => {
-  const handleResize = () => {
-    ScrollTrigger.refresh();
-  };
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
+// useEffect(() => {
+//   const handleResize = () => {
+//     ScrollTrigger.refresh();
+//   };
+//   window.addEventListener("resize", handleResize);
+//   return () => window.removeEventListener("resize", handleResize);
+// }, []);
 
 useGSAP(() => {
   if (!menuRef.current) return;
 
   const tween = gsap.fromTo(
     menuRef.current,
-    { opacity: 0 },
-    { opacity: 1, ease: "none" }
+    { opacity: 0},
+    { opacity: 1, ease: "cubic-bezier(0.16, 1, 0.3, 1)" }
   );
 
   const trigger=ScrollTrigger.create({

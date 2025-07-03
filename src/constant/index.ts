@@ -68,3 +68,55 @@ export const projects = [
       "Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. ",
   },
 ];
+
+export const footer = [
+  [
+    {
+    text: "Menu",
+    href: "#",
+  },
+    {
+    text: "Home",
+    href: "#",
+  },
+    {
+    text: "Services",
+    href: "#",
+  },
+    {
+    text: "Projects",
+    href: "#",
+  },
+    {
+    text: "About",
+    href: "#",
+  },
+    {
+    text: "Contact",
+    href: "#",
+  },
+
+  ],
+  [
+    {
+    text: "Socials",
+    href: "#",
+  },
+  {
+    text: "Instagram",
+    href: "#",
+  },
+  {
+    text: "Github",
+    href: "#",
+  },
+  {
+    text: "Twitter",
+    href: "#",
+  },
+  {
+    text: "Linkedin",
+    href: "#",
+  },
+  ]
+];

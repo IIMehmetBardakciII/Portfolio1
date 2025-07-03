@@ -59,7 +59,7 @@ useGSAP(() => {
 
 
   return (
-    <section className="pt-section_desktop_margin w-full relative h-full">
+    <section className="pt-section_desktop_margin w-full relative h-full ">
       <SectionHeader
         title="Projects"
         subtitle="Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. "

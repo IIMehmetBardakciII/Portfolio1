@@ -1,6 +1,5 @@
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
-import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 
 type PropsType = {

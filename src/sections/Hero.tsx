@@ -6,44 +6,8 @@
   import { ScrollTrigger } from "gsap/all";
 
   const Hero = () => {
-    const containerRef=useRef<HTMLElement|null>(null);
-  // useGSAP(() => {
-  //   const hero = containerRef.current;
-  //   gsap.from("#imagehero", {
-  //     x: "-50%",
-  //     opacity: 0,
-  //     ease: "cubic-bezier(0.16, 1, 0.3, 1)",
-  //     duration: 1,
-  //   });
+    const herocontainerRef=useRef<HTMLElement|null>(null);
 
-  //   // Pin işlemi
-  //   ScrollTrigger.create({
-  //     trigger: hero,
-  //     start: "top top",
-  //     end: "+=100%",
-  //     pin: true,
-  //     pinSpacing: false,
-  //     // markers:true
-  //   });
-
-  //   // Opacity geçişi
-  //   gsap.fromTo(
-  //     hero,
-  //     { opacity: 1, y:0},
-  //     {
-  //       opacity: 0,
-  //       y:"-50%",
-  //       scale:0.5,
-  //       ease: "none",
-  //       scrollTrigger: {
-  //         trigger: hero,
-  //         start: "top top",
-  //         end: "+=100%",
-  //         scrub: true,
-  //       },
-  //     }
-  //   );
-  // }, []);
  
 useGSAP(()=>{
   const ctx=gsap.context(()=>{
@@ -57,7 +21,7 @@ useGSAP(()=>{
 
       // 🎯 Hero section'u pinliyoruz
       ScrollTrigger.create({
-        trigger: containerRef.current,
+        trigger: herocontainerRef.current,
         start: "top top",
         end: "+=100%",
         pin: true,
@@ -65,7 +29,7 @@ useGSAP(()=>{
         // markers: true,
       });
 gsap.fromTo(
-        containerRef.current,
+        herocontainerRef.current,
         { opacity: 1, y: 0 },
         {
           opacity: 0,
@@ -73,19 +37,19 @@ gsap.fromTo(
           scale: 0.5,
           ease: "none",
           scrollTrigger: {
-            trigger: containerRef.current,
+            trigger: herocontainerRef.current,
             start: "top top",
             end: "+=100%",
             scrub: true,
           },
         }
       );
-  },containerRef);
+  },herocontainerRef);
   return ()=>ctx.revert();
 },[])
 
     return (
-      <header id="#hero" ref={containerRef} className="relative z-10 xl:mt-[60px] sm:mt-10 mt-5 flex  flex-col gap-[40px] min-h-screen pb-section_desktop_margin">
+      <header id="#hero" ref={herocontainerRef} className="relative z-10 xl:mt-[60px] sm:mt-10 mt-5 flex  flex-col gap-[40px] min-h-screen pb-section_desktop_margin">
         <div className="w-full ">
         <TextAnimation><h1 className="xl:h1 sm:h2 h3">adnan karatas</h1></TextAnimation>
         </div>

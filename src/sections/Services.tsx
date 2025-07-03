@@ -4,7 +4,7 @@ import {servicesSteps} from "../constant/index.ts";
 
 const Services = () => {
   return (
-    <section id="services" className="pt-section_desktop_margin w-full relative">
+    <section id="services" className="pt-section_desktop_margin w-full relative ">
       <SectionHeader
         sectionNumber="02"
         title="services"

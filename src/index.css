@@ -32,10 +32,10 @@ padding sorununu çözüyor */
 }
 
 @utility whitegrid{
-    @apply bg-[url('/white_grid.svg')]; 
+    @apply bg-[url('/white_grid.svg')] h-full; 
 }
 @utility darkgrid{
-   @apply bg-[url('/dark_grid.svg')]  ;
+   @apply bg-[url('/dark_grid.svg')] h-full bg-repeat ;
 }
 @utility h1 {
   @apply text-[195.14px] font-semibold leading-[199.2px] tracking-[0.01em];
