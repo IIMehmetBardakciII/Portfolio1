@@ -11,7 +11,7 @@ const About = () => {
       />
       <div className="pb-4 w-full h-[657px]  max-sm:h-full flex max-sm:flex-col xl:gap-[124px] sm:gap-6 gap-4">
         <img
-          src="/ImageHeroLeftSide.png"
+          src="/ImageHeroLeftSide.webp"
           alt="heroImage"
           className=" h-full object-cover w-1/2 max-sm:w-full  border "
         />

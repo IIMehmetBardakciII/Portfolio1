@@ -54,7 +54,7 @@ gsap.fromTo(
         <TextAnimation><h1 className="xl:h1 sm:h2 h3">adnan karatas</h1></TextAnimation>
         </div>
         <div className="flex w-full justify-between max-sm:flex-col gap-4 h-[524px]">
-          <img id="imagehero" src="/ImageHeroLeftSide.png" alt="HeroLeftImage" className="object-cover w-1/2 max-sm:h-[230px] max-sm:w-full  h-full " />
+          <img id="imagehero" src="/ImageHeroLeftSide.webp" alt="HeroLeftImage" className="object-cover w-1/2 max-sm:h-[230px] max-sm:w-full  h-full " />
 
           <div className="w-[548px] max-xl:w-full flex flex-col sm:justify-around  max-sm:gap-5 ">
           <div className="w-full flex flex-col gap-4">

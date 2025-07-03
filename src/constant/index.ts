@@ -33,35 +33,35 @@ export const servicesSteps = [
 
 export const projects = [
   {
-    projectImage: "/projectImage1.jpg",
+    projectImage: "/projectImage1.webp",
     projectName: "Project Name",
     projectNumber: "01",
     projectDescription:
       "Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. ",
   },
   {
-    projectImage: "/projectImage2.jpg",
+    projectImage: "/projectImage2.webp",
     projectName: "Project Name",
     projectNumber: "02",
     projectDescription:
       "Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. ",
   },
   {
-    projectImage: "/projectImage3.jpg",
+    projectImage: "/projectImage3.webp",
     projectName: "Project Name",
     projectNumber: "03",
     projectDescription:
       "Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. ",
   },
   {
-    projectImage: "/projectImage4.jpg",
+    projectImage: "/projectImage4.webp",
     projectName: "Project Name",
     projectNumber: "04",
     projectDescription:
       "Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. ",
   },
   {
-    projectImage: "/projectImage5.jpg",
+    projectImage: "/projectImage5.webp",
     projectName: "Project Name",
     projectNumber: "05",
     projectDescription:
