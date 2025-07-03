@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react"; // useEffect'i ekleyin
+import { useRef } from "react"; 
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import HamburgerMenu from "./HamburgerMenu";
@@ -10,13 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const FixedRightNavigation = () => {
   const menuRef = useRef<HTMLDivElement | null>(null);
 
-// useEffect(() => {
-//   const handleResize = () => {
-//     ScrollTrigger.refresh();
-//   };
-//   window.addEventListener("resize", handleResize);
-//   return () => window.removeEventListener("resize", handleResize);
-// }, []);
+
 
 useGSAP(() => {
   if (!menuRef.current) return;

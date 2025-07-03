@@ -8,6 +8,8 @@ const Footer = () => {
         <div className="flex flex-col gap-3">
           {footer[0].map((MenusItems,index)=>(
             <a
+            key={MenusItems.text}
+
             className={clsx(
               "body hover:text-accent transition-colors ease-out duration-150",
               index==0?"font-bold underline":"font-normal"
@@ -18,6 +20,7 @@ const Footer = () => {
         <div className="flex flex-col gap-3">
            {footer[1].map((MenusItems,index)=>(
             <a
+            key={MenusItems.text}
             className={clsx(
               "body hover:text-accent transition-colors ease-out duration-150",
               index==0?"font-bold underline":"font-normal"
@@ -27,7 +30,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex flex-col items-center">
-           <div className="body">Logo</div> 
+           <div className="span">Developed & Designed By Mehmet Bardakci</div> 
            <p className="body font-semibold">© 2025 Adnan Karatas rights reserved.</p>
       </div>
     </footer>
